@@ -1,0 +1,12 @@
+language: en
+pipeline: pretrained_embeddings_spacy
+policies:
+- name: MemoizationPolicy
+  max_history: 10
+- name: KerasPolicy
+  featurizer:
+  - name: MaxHistoryTrackerFeaturizer
+    max_history: 10
+    state_featurizer:
+      - name: BinarySingleStateFeaturizer
+- name: MappingPolicy
